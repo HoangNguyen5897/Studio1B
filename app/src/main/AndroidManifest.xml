@@ -22,6 +22,10 @@
         <activity android:name=".AddMedicalConditionActivity"
             android:theme="@style/StandardTheme">
         </activity>
+        <activity android:name=".DoctorConsultActivity"
+            android:theme="@style/StandardTheme">
+
+        </activity>
     </application>
 
 </manifest>

@@ -105,7 +105,6 @@ public class MedicalConditionActivity extends AppCompatActivity implements Navig
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch(id){
-            case R.id.nav_condition: Intent intent = new Intent(this, MedicalConditionActivity.class); startActivity(intent);
             case R.id.nav_consult: Intent intent2 = new Intent(this, DoctorConsultActivity.class); startActivity(intent2);
         }
         DrawerLayout layout = (DrawerLayout) findViewById(R.id.conditionDl);

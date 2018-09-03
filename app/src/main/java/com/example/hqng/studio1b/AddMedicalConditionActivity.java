@@ -58,6 +58,7 @@ public class AddMedicalConditionActivity extends AppCompatActivity {
             MedicalCondition condition = new MedicalCondition(id, conditionTitle, conditionDescription);
             reference.child(id).setValue(condition);
         }
+        finish();
     }
 
     public void showDialogBox(String message, String title) {
