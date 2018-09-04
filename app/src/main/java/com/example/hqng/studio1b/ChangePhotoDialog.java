@@ -20,6 +20,7 @@ import java.io.File;
 public class ChangePhotoDialog extends DialogFragment {
     private static final String TAG = "ChangePhotoDialog";
 
+
     public interface OnPhotoReceivedListener{
         public void getBitmapImage(Bitmap bitmap);
         public void getImagePath(String imagePath);
@@ -52,6 +53,8 @@ public class ChangePhotoDialog extends DialogFragment {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
                 startActivityForResult(intent, Init.PICFILE_REQUEST_CODE);
+
+
             }
         });
 
