@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -35,11 +36,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener,  com.google.android.gms.location.LocationListener {
+        GoogleApiClient.OnConnectionFailedListener,  com.google.android.gms.location.LocationListener{
 
     private GoogleMap mMap;
-    double latitude;
-    double longitude;
+    private GPSTraker gpsTraker;
+    private Location mLocation;
+
+    double latitude, longitude;
     private int PROXIMITY_RADIUS = 10000;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
@@ -52,6 +55,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        gpsTraker = new GPSTraker(getApplicationContext());
+        mLocation = gpsTraker.getLocation();
+        latitude = mLocation.getLatitude();
+        longitude = mLocation.getLongitude();
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
@@ -71,7 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        Log.d("onLocationChanged", "-----------------------------------------------------");
+
 
     }
     private boolean CheckGooglePlayServices() {
@@ -99,7 +107,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
+        //LatLng sydney = new LatLng(latitude, longitude);
+
+                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         //Initialize Google Play Services
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -117,7 +128,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Button btnPharmacy = (Button) findViewById(R.id.btnPharmacy);
         btnPharmacy.setOnClickListener(new View.OnClickListener() {
-            String Pharmacy = "Pharmacy";
+            String Pharmacy = "pharmacy";
             @Override
             public void onClick(View v) {
                 Log.d("onClick", "Button is Clicked");
