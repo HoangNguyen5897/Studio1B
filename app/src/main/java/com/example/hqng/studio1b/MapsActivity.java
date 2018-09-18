@@ -58,8 +58,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         gpsTraker = new GPSTraker(getApplicationContext());
         mLocation = gpsTraker.getLocation();
-        latitude = mLocation.getLatitude();
-        longitude = mLocation.getLongitude();
+        //latitude = mLocation.getLatitude();
+        //longitude = mLocation.getLongitude();
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
