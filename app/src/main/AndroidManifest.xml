@@ -24,8 +24,10 @@
         <activity
             android:name=".PatientRegister"
             android:parentActivityName=".ChoiceRegister" />
-        <activity android:name=".PatientLogin"
-            android:parentActivityName=".ChoiceRegister"></activity>
+        <activity
+            android:name=".PatientLogin"
+            android:parentActivityName=".ChoiceRegister" />
+        <activity android:name=".PatientDetails"></activity>
     </application>
 
 </manifest>

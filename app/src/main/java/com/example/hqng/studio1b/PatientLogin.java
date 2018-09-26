@@ -38,6 +38,8 @@ public class PatientLogin extends AppCompatActivity implements View.OnClickListe
 
             //profile activity here
             //Simplified coding, part 2, around 11 minutes
+            finish();
+            startActivity(new Intent(getApplicationContext(),PatientDetails.class));
         }
 
         patientLoginEmail = (EditText) findViewById(R.id.patientLoginEmail);
@@ -86,7 +88,9 @@ public class PatientLogin extends AppCompatActivity implements View.OnClickListe
                         progressDialog.dismiss();
 
                         if(task.isSuccessful()){
-                            //start the profile activity
+                           //start the profile activity
+                            finish();
+                            startActivity(new Intent(getApplicationContext(),PatientDetails.class));
                         }
                     }
                 });

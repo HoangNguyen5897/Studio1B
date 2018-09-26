@@ -1,6 +1,7 @@
 package com.example.hqng.studio1b;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -96,5 +97,7 @@ public class PatientRegister extends AppCompatActivity implements View.OnClickLi
         if(view == patientRegButton){
             registerPatient();
         }
+
+
     }
 }
